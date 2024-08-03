@@ -1,0 +1,21 @@
+﻿@page "/"
+@inherits EmployeeListBase
+@attribute [StreamRendering(true)]
+
+<h3>Employee List</h3>
+@if (Employees == null)
+{
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+else
+{
+<div class="card">
+    @foreach( var employee in Employees)
+    {
+         <DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged"
+             OnEmployeeDeleted="EmployeeDeleted"></DisplayEmployee>
+    }
+</div>
+}
